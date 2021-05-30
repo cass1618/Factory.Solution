@@ -1,6 +1,6 @@
 namespace Factory.Models
 {
-  public class Engineer
+  public class EngineerMachine
   {       
     public int EngineerMachineId { get; set; }
     public int MachineId { get; set; }

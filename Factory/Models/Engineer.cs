@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using System;
 
 namespace Factory.Models
 {
-  public class Factory
+  public class Engineer
   {
-    public Factory()
+    public Engineer()
     {
       this.JoinEntities = new HashSet<EngineerMachine>();
     }
@@ -15,6 +16,6 @@ namespace Factory.Models
     public DateTime HireDate { get; set; }
     public int SkillLevel { get; set; }
 
-    public virtual ICollection<EngineerItem> JoinEntities { get; set; }
+    public virtual ICollection<EngineerMachine> JoinEntities { get; set; }
   }
 }
