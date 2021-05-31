@@ -1,0 +1,25 @@
+@model Factory.Models.Engineer;
+
+<h2>Engineer Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.FirstName): @Html.DisplayFor(model => model.FirstName)</h3>
+<h3>@Html.DisplayNameFor(model => model.LastName): @Html.DisplayFor(model => model.LastName)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This engineer is not authorized to perform maintenence on any machines.</p>
+}
+else
+{
+  <h4>This engineer is authorized to perform maintenece on the following machines:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.Machine.Designation</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to list of Engineers", "Index")</p>
+<p>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</p>
