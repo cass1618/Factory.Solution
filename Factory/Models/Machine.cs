@@ -10,6 +10,7 @@ namespace Factory.Models
     }
 
     public int MachineId { get; set; }
+    public string Designation { get; set; }
     public string MaintenancePeriod { get; set; }
     public int ManHours { get; set; }
 
