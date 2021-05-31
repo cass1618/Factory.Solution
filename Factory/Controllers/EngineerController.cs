@@ -15,6 +15,7 @@ namespace Factory.Controllers
       _db = db;
     }
 
+    [HttpGet("/engineer")]
     public ActionResult Index()
     {
       List<Engineer> model = _db.Engineers.ToList();
