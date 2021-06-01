@@ -15,20 +15,20 @@ namespace Factory.Controllers
       _db = db;
     }
 
-    [HttpGet("/engineer")]
+    [HttpGet("/engineers")]
     public ActionResult Index()
     {
       List<Engineer> model = _db.Engineers.ToList();
       return View(model);
     }
 
-    [HttpGet("/engineer/create")]
+    [HttpGet("/engineers/create")]
     public ActionResult Create()
     {
       return View();
     }
 
-    [HttpPost("/engineer/create")]
+    [HttpPost("/engineers/create")]
     public ActionResult Create(Engineer engineer)
     {
       _db.Engineers.Add(engineer);
@@ -36,14 +36,14 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
-    [HttpGet("/engineer/edit")]
+    [HttpGet("/engineers/edit")]
     public ActionResult Edit(int id)
     {
       var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
       return View(thisEngineer);
     }
 
-    [HttpPost("/engineer/edit")]
+    [HttpPost("/engineers/edit")]
     public ActionResult Edit(Engineer engineer)
     {
       _db.Entry(engineer).State = EntityState.Modified;
@@ -51,14 +51,14 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
-    [HttpGet("/engineer/delete")]
+    [HttpGet("/engineers/delete")]
     public ActionResult Delete(int id)
     {
       var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
       return View(thisEngineer);
     }
 
-    [HttpPost("/engineer/delete"), ActionName("Delete")]
+    [HttpPost("/engineers/delete"), ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
       var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
@@ -67,6 +67,7 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpGet("/engineers/details")]
     public ActionResult Details(int id)
     {
       var thisEngineer = _db.Engineers

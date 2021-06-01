@@ -15,20 +15,20 @@ namespace Factory.Controllers
       _db = db;
     }
 
-    [HttpGet("/machine")]
+    [HttpGet("/machines")]
     public ActionResult Index()
     {
       List<Machine> model = _db.Machines.ToList();
       return View(model);
     }
 
-    [HttpGet("/machine/create")]
+    [HttpGet("/machines/create")]
     public ActionResult Create()
     {
       return View();
     }
 
-    [HttpPost("/machine/create")]
+    [HttpPost("/machines/create")]
     public ActionResult Create(Machine machine)
     {
       _db.Machines.Add(machine);
@@ -36,14 +36,14 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
-    [HttpGet("/machine/edit")]
+    [HttpGet("/machines/edit")]
     public ActionResult Edit(int id)
     {
       var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
       return View(thisMachine);
     }
 
-    [HttpPost("/machine/edit")]
+    [HttpPost("/machines/edit")]
     public ActionResult Edit(Machine machine)
     {
       _db.Entry(machine).State = EntityState.Modified;
@@ -51,14 +51,14 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
-    [HttpGet("/machine/delete")]
+    [HttpGet("/machines/delete")]
     public ActionResult Delete(int id)
     {
       var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
       return View(thisMachine);
     }
 
-    [HttpPost("/machine/delete"), ActionName("Delete")]
+    [HttpPost("/machines/delete"), ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
       var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
@@ -67,6 +67,7 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpGet("/machines/details")]
     public ActionResult Details(int id)
     {
       var thisMachine = _db.Machines
