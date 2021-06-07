@@ -1,3 +1,29 @@
-<h1>Welcome to dR. sILlyStRInGz's Factory!</h1>
-<h3>@Html.ActionLink("MACHINES ⚙️", "Index", "Machine")</h3>
-<h3>@Html.ActionLink("ENGINEERS 🤖", "Index", "Engineer")</h3>
+@using Factory.Models;
+@model List<Factory.Models.Machine>;
+
+<h1>Machines</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No machines have been added yet!</h3>
+} 
+
+@foreach (Machine machine in Model)
+{
+  <li>@Html.ActionLink($"{machine.Designation}", "Details", "Machine", new { id = machine.MachineId })</li>
+}
+
+<h1>ENGINEERS</h1>
+
+@if (@ViewBag.Engineers.Count == 0)
+{
+  <h3>No engineers have been added yet!</h3>
+} 
+
+@foreach (Engineer engineer in ViewBag.Engineers)
+{
+  <li>@Html.ActionLink($"{engineer.FirstName}", "Details", "Engineer", new { id = engineer.EngineerId })</li>
+}
+
+<p>@Html.ActionLink("Add new machine", "Create", "Machine")</p>
+<p>@Html.ActionLink("Add new engineer", "Create", "Engineer")</p>
